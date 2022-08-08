@@ -1,1 +1,1 @@
-# .dotfiles
+# Fish Configuration: 
