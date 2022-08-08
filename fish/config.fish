@@ -1,5 +1,9 @@
 set fish_greeting "Nice Day, Harvey!!!"
 
+# Start Up the Starship theme
+starship init fish | source
+
+# exa shortcut
 if type -q exa 
 	alias ll "exa -l -g --icons"
 	alias lla "ll -a"
