@@ -3,7 +3,7 @@ require "tpq16.keymaps"
 
 require "tpq16.plugins"
 require "tpq16.webdev-icon"
---require "tpq16.autocommands"
+require "tpq16.autocommands"
 require "tpq16.colorscheme"
 
 --require "tpq16.lsp"
