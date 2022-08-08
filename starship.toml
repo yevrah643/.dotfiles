@@ -15,7 +15,7 @@ show_always = true
 ssh_only = true
 format = 'on [MacBook-Pro-14](bold yellow) '
 trim_at = "."
-disabled = false
+disabled = true
 
 # Replace the "❯" symbol in the prompt with "➜"
 [character]                            # The name of the module we are configuring is "character"
