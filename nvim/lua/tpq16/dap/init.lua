@@ -1,9 +1,7 @@
 local dap_status_ok, dap = pcall(require, "dap")
 if not dap_status_ok then
   return
-end
-local dap_ui_status_ok, dapui = pcall(require, "dapui")
-if not dap_ui_status_ok then
+end local dap_ui_status_ok, dapui = pcall(require, "dapui") if not dap_ui_status_ok then
   return
 end
 -- local dap_virtualText_status_ok, dap_virtual_text = pcall(require, "nvim-dap-virtual-text")
@@ -70,6 +68,6 @@ end
   require('telescope').load_extension('dap')
   require("dapui").setup() -- use default
   configure_exts();
-  require("user.dap.cpp").setup()
+  require("tpq16.dap.cpp").setup()
 
 return M
