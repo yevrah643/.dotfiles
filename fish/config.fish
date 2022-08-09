@@ -1,4 +1,7 @@
-set fish_greeting "Nice Day, Harvey!!!"
+# function fish_greeting
+#     echo yevrah643 hop on (set_color yellow; date +%T; set_color normal)
+# end
+set fish_greeting ""
 
 # Start Up the Starship theme
 starship init fish | source
