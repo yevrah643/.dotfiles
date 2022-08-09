@@ -4,6 +4,104 @@
 #[┣─project❯](bold red) $directory$rust$git_branch$git_status$package$golang$terraform$docker_context$python$docker_context$nodejs
 #[╰─cmd────❯](bold green) 
 #"""
+
+# [hostname]
+# ssh_only = true
+# format = 'on [MacBook-Pro-14](bold yellow) '
+# trim_at = "."
+# disabled = true
+#
+# [localip]
+# ssh_only = false
+# format = "@[$localipv4](bold red) "
+# disabled = true
+#
+# [docker_context]
+# symbol = " "
+# format = "via [$symbol$context]($style) "
+# style = "blue bold"
+# only_with_files = true
+# detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
+# detect_folders = []
+# disabled = false
+#
+# [git_commit]
+# commit_hash_length = 4
+# tag_symbol = "🔖 "
+#
+# [git_status]
+# conflicted = "🏳"
+# ahead = "🏎💨"
+# behind = "😰"
+# diverged = "😵"
+# up_to_date = "✓"
+# untracked = "🤷"
+# stashed = "📦"
+# modified = "📝"
+# staged = '[++\($count\)](green)'
+# renamed = "👅"
+# deleted = "🗑"
+#
+# [lua]
+# format = "via [🌕 $version](bold blue) "
+#
+# [hg_branch]
+# symbol = " "
+#
+# [java]
+# symbol = " "
+#
+# # [julia]
+# # symbol = " "
+#
+# [memory_usage]
+# symbol = " "
+#
+# [nim]
+# symbol = " "
+#
+# [nix_shell]
+# symbol = " "
+#
+# [package]
+# symbol = " "
+#
+# [perl]
+# symbol = " "
+#
+# [php]
+# symbol = " "
+#
+# [python]
+# symbol = " "
+# #pyenv_version_name = true
+# format = 'via [${symbol}python (${version} )(\($virtualenv\) )]($style)'
+# style = "bold yellow"
+# pyenv_prefix = "venv "
+# python_binary = ["./venv/bin/python", "python", "python3", "python2"]
+# detect_extensions = ["py"]
+# version_format = "v${raw}"
+#
+# [ruby]
+# symbol = " "
+#
+# [rust]
+# symbol = " "
+#
+# [scala]
+# symbol = " "
+#
+# [shlvl]
+# symbol = " "
+#
+# [swift]
+# symbol = "ﯣ "
+#
+# [nodejs]
+# format = "via [ Node.js $version](bold green) "
+# detect_files = ["package.json", ".node-version"]
+# detect_folders = ["node_modules"]
+
 [username]
 style_user = "green bold"
 style_root = "red bold"
@@ -11,64 +109,22 @@ format = "[$user]($style)🚀 "
 disabled = false
 show_always = true
 
-[hostname]
-ssh_only = true
-format = 'on [MacBook-Pro-14](bold yellow) '
-trim_at = "."
-disabled = true
-
-# Replace the "❯" symbol in the prompt with "➜"
 [character]                            # The name of the module we are configuring is "character"
 success_symbol = "[﬌](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
 error_symbol = "[✗](bold red)"
-#  
+
 # configure directory
 [directory]
 read_only = " "
-truncation_length = 10
+truncation_length = 20
 truncate_to_repo = true # truncates directory to root folder if in github repo
-style = "bold italic blue"
+#style = "bold italic blue"
 
-# [cmd_duration]
-# min_time = 4
-# show_milliseconds = false
-# disabled = false
-# style = "bold italic red"
-
-[localip]
-ssh_only = false
-format = "@[$localipv4](bold red) "
-disabled = true
-
-[aws]
-symbol = "  "
-
-[conda]
-symbol = " "
-
-[dart]
-symbol = " "
-
-# [directory]
-# read_only = " "
-
-[docker_context]
-symbol = " "
-format = "via [$symbol$context]($style) "
-style = "blue bold"
-only_with_files = true
-detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
-detect_folders = []
+[cmd_duration]
+min_time = 4
+show_milliseconds = false
 disabled = false
-
-# [elixir]
-# symbol = " "
-#
-# [elm]
-# symbol = " "
-[c]
-format = "via [$name $version]($style)"
-detect_extensions = ["cpp", "c", "h"]
+style = "bold italic red"
 
 # Git theme config
 [git_branch]
@@ -76,56 +132,90 @@ symbol = "🌱 "
 truncation_length = 4
 truncation_symbol = ""
 
-[git_commit]
-commit_hash_length = 4
-tag_symbol = "🔖 "
-
-[git_status]
-conflicted = "🏳"
-ahead = "🏎💨"
-behind = "😰"
-diverged = "😵"
-up_to_date = "✓"
-untracked = "🤷"
-stashed = "📦"
-modified = "📝"
-staged = '[++\($count\)](green)'
-renamed = "👅"
-deleted = "🗑"
-
-[golang]
-symbol = " "
-#end git 
-
-[lua]
-format = "via [🌕 $version](bold blue) "
-
 [hg_branch]
 symbol = " "
 
-[java]
-symbol = " "
+# [git_commit]
+# commit_hash_length = 4
+# tag_symbol = "🔖 "
 
-# [julia]
-# symbol = " "
+[c]
+format = "via [$symbol$name ]($style)"
+detect_extensions =  ["c", "h", "cpp"]
 
-[memory_usage]
-symbol = " "
+[buf]
+format = "via [$symbol]($style)"
+
+[cmake]
+format = "via [$symbol]($style)"
+
+[cobol]
+format = "via [$symbol]($style)"
+
+[crystal]
+format = "via [$symbol]($style)"
+
+[daml]
+format = "via [$symbol]($style)"
+
+[dart]
+format = "via [$symbol]($style)"
+
+[deno]
+format = "via [$symbol]($style)"
+
+[dotnet]
+format = "[$symbol(🎯 $tfm )]($style)"
+
+[elixir]
+format = 'via [$symbol]($style)'
+
+[elm]
+format = 'via [$symbol]($style)'
+
+[erlang]
+format = 'via [$symbol]($style)'
+
+[golang]
+format = 'via [$symbol]($style)'
+
+[helm]
+format = 'via [$symbol]($style)'
+
+[julia]
+format = 'via [$symbol]($style)'
+
+[kotlin]
+format = 'via [$symbol]($style)'
+
+# [lua]
+# format = 'via [$symbol]($style)'
+[lua]
+format = "via [🌕 $version](bold blue) "
 
 [nim]
-symbol = " "
+format = 'via [$symbol]($style)'
 
-[nix_shell]
-symbol = " "
+[nodejs]
+format = 'via [$symbol]($style)'
 
-[package]
-symbol = " "
+[ocaml]
+format = 'via [$symbol(\($switch_indicator$switch_name\) )]($style)'
 
 [perl]
-symbol = " "
+format = 'via [$symbol]($style)'
 
 [php]
-symbol = " "
+format = 'via [$symbol]($style)'
+
+[pulumi]
+format = 'via [$symbol$stack]($style)'
+
+[purescript]
+format = 'via [$symbol]($style)'
+
+# [python]
+# format = 'via [$symbol]($style)'
 
 [python]
 symbol = " "
@@ -137,22 +227,29 @@ python_binary = ["./venv/bin/python", "python", "python3", "python2"]
 detect_extensions = ["py"]
 version_format = "v${raw}"
 
+[raku]
+format = 'via [$symbol]($style)'
+
+[red]
+format = 'via [$symbol]($style)'
+
+[rlang]
+format = 'via [$symbol]($style)'
+
 [ruby]
-symbol = " "
+format = 'via [$symbol]($style)'
 
 [rust]
-symbol = " "
-
-[scala]
-symbol = " "
-
-[shlvl]
-symbol = " "
+format = 'via [$symbol]($style)'
 
 [swift]
-symbol = "ﯣ "
+format = 'via [$symbol]($style)'
 
-[nodejs]
-format = "via [ Node.js $version](bold green) "
-detect_files = ["package.json", ".node-version"]
-detect_folders = ["node_modules"]
+[vagrant]
+format = 'via [$symbol]($style)'
+
+[vlang]
+format = 'via [$symbol]($style)'
+
+[zig]
+format = 'via [$symbol]($style)'
