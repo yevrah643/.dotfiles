@@ -2,6 +2,8 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty it self.
+import:
+  - /Users/tuongquangphung/Downloads/alacritty-master/dracula.yml
 # env:
   # TERM env customization.
   #
@@ -11,32 +13,33 @@
   # You can verify this by checking for the presence of `smso` and `sitm` in
   # `infocmp xterm-256color`.
   # TERM: xterm-256color-italic
-colors:
-  primary:
-    background: '#1e2127'
-    foreground: '#D8DEE9'
-  normal:
-    black: "#3B4252"
-    red: "#BF616A"
-    green: "#A3BE8C"
-    yellow: "#EBCB8B"
-    blue: "#81A1C1"
-    magenta: "#B48EAD"
-    cyan: "#88C0D0"
-    white: "#abb2bf"
 
-  # Bright colors
-  bright:
-    black: "#5c6370"
-    red: "#e06c75"
-    green: "#98c379"
-    yellow: "#d19a66"
-    blue: "#61afef"
-    magenta: "#c678dd"
-    cyan: "#56b6c2"
-    white: "#ECEFF4"
-
-    background_opacity: 1.0
+# colors:
+#   primary:
+#     background: '#1e2127'
+#     foreground: '#D8DEE9'
+#   normal:
+#     black: "#3B4252"
+#     red: "#BF616A"
+#     green: "#A3BE8C"
+#     yellow: "#EBCB8B"
+#     blue: "#81A1C1"
+#     magenta: "#B48EAD"
+#     cyan: "#88C0D0"
+#     white: "#abb2bf"
+#
+#   # Bright colors
+#   bright:
+#     black: "#5c6370"
+#     red: "#e06c75"
+#     green: "#98c379"
+#     yellow: "#d19a66"
+#     blue: "#61afef"
+#     magenta: "#c678dd"
+#     cyan: "#56b6c2"
+#     white: "#ECEFF4"
+#
+#     background_opacity: 1.0
     
 window:
   # Window dimensions (changes require restart)
@@ -447,6 +450,5 @@ debug:
 
   # Record all characters and escape sequences as test data.
   ref_test: false
-
 
 
