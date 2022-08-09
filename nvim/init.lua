@@ -6,8 +6,8 @@ require "tpq16.webdev-icon"
 require "tpq16.autocommands"
 require "tpq16.colorscheme"
 
---require "tpq16.lsp"
---require "tpq16.dap"
+require "tpq16.lsp"
+require "tpq16.dap"
 require "tpq16.cmp"
 
 require "tpq16.telescope"
