@@ -26,22 +26,22 @@ local opts = {}
 
 for _, server in pairs(servers) do
   opts = {
-    on_attach = require("user.lsp.handlers").on_attach,
-    capabilities = require("user.lsp.handlers").capabilities,
+    on_attach = require("tpq16.lsp.handlers").on_attach,
+    capabilities = require("tpq16.lsp.handlers").capabilities,
   }
 --Start
   if server == "sumneko_lua" then
-    local sumneko_opts = require "user.lsp.settings.sumneko_lua"
+    local sumneko_opts = require "tpq16.lsp.settings.sumneko_lua"
     opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
   end
 
   if server == "pyright" then
-    local pyright_opts = require "user.lsp.settings.pyright"
+    local pyright_opts = require "tpq16.lsp.settings.pyright"
     opts = vim.tbl_deep_extend("force", pyright_opts, opts)
   end
 
   if server == "ccls" then
-    local ccls_opts = require "user.lsp.settings.ccls"
+    local ccls_opts = require "tpq16.lsp.settings.ccls"
     opts = vim.tbl_deep_extend("force", ccls_opts, opts)
   end
 --End
