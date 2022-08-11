@@ -1,5 +1,10 @@
 local M = {}
-local navic = require("nvim-navic")
+
+-- local navic = require("nvim-navic")
+-- local status_navic_fine, navic = pcall(require, "nvim-navic")
+-- if not status_navic_fine then 
+--  return 
+-- end
 
 local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_cmp_ok then
@@ -12,14 +17,16 @@ M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 
 M.setup = function()
   local signs = {
-    { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
+    { name = "DiagnosticSignError", text = "" , texthl = "LspDiagnosticsSignError" },
+    { name = "DiagnosticSignWarn",  text = "" , texthl = "LspDiagnosticsDefaultHint" },
+    { name = "DiagnosticSignHint",  text = "" , texthl = "LspDiagnosticsSignHint" },
+    { name = "DiagnosticSignInfo",  text = "" , texthl = "LspDiagnosticsSignInformation" },
   }
 
   for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+    vim.fn.sign_define(sign.name, {text = sign.text, texthl = sign.texthl})
+    --vim.fn.sign_define('LspDiagnosticsSignError', { text = "", texthl = "LspDiagnosticsDefaultError" })
+    --vim.fn.sign_define(sign.name, {texthl = sign.name, text = sign.text, numhl = "" })
   end
 
   local config = {
@@ -102,7 +109,7 @@ M.on_attach = function(client, bufnr)
     client.server_capabilities.document_formatting = false
   end
 
-  navic.attach(client, bufnr)
+ -- navic.attach(client, bufnr)
 
   lsp_keymaps(bufnr)
 
