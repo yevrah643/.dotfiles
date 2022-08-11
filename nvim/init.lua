@@ -28,5 +28,5 @@ require "tpq16.illuminate"
 require "tpq16.indentline"
 require "tpq16.alpha"
 
-require "tpq16.navic"
+--require "tpq16.navic"
 require "tpq16.sniplua"
