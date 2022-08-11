@@ -6,6 +6,9 @@ set fish_greeting ""
 # Start Up the Starship theme
 starship init fish | source
 
+# Start up for Python Version Management
+pyenv init - | source
+
 # exa shortcut
 if type -q exa 
 	alias ll "exa -l -g --icons"
