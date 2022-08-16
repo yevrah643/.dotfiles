@@ -1,16 +1,16 @@
 local cmp_status_ok, cmp = pcall(require, "cmp")
 if not cmp_status_ok then
-	return
+  return
 end
 
 local snip_status_ok, luasnip = pcall(require, "luasnip")
 if not snip_status_ok then
-	return
+  return
 end
 
 local check_backspace = function()
-	local col = vim.fn.col(".") - 1
-	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+  local col = vim.fn.col(".") - 1
+  return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
 local has_words_before = function()
@@ -23,7 +23,7 @@ local kind_icons = icons.kind
 
 --local compare = require "cmp.config.compare"
 cmp.setup({
--- Start Configuration
+  -- Start Configuration
   -- Start of Mappings
   mapping = cmp.mapping.preset.insert({
 
@@ -72,11 +72,11 @@ cmp.setup({
       "i",
       "s",
     }),
-   }), -- End of Mappings module
+  }), -- End of Mappings module
 
-	formatting = {
-		fields = { "kind", "abbr", "menu" },
-		format = function(entry, vim_item)
+  formatting = {
+    fields = { "kind", "abbr", "menu" },
+    format = function(entry, vim_item)
       -- Kind icons
       vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
       -- Menu order
@@ -88,13 +88,13 @@ cmp.setup({
         buffer = "[Buffer]",
         path = "[Path]",
       })[entry.source.name]
-		  return vim_item
-		end,
-	},
+      return vim_item
+    end,
+  },
 
-	sources = {
-		--{ name = "nvim_lsp", max_item_count = 10 },
-		{
+  sources = {
+    --{ name = "nvim_lsp", max_item_count = 10 },
+    {
       name = "luasnip",
       max_item_count = 2,
       group_index = 1,
@@ -103,87 +103,76 @@ cmp.setup({
 
     {
       name = "nvim_lsp",
-      filter = function(entry, ctx)
-        -- vim.pretty_print()
-        local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
-        -- vim.bo.filetype
-        if kind == "Snippet" and ctx.prev_context.filetype == "java" then
-          return true
-        end
-      end,
       max_item_count = 4,
       group_index = 1,
       keyword_length = 2,
     },
-    --{name = "nvim_lua", group_index = 2 },
-    --{ name = "cmp_tabnine", group_index = 3 },
-		{
+
+    {
       name = "buffer",
       max_item_count = 2,
       group_index = 1,
       keyword_length = 2,
     },
-		{
+
+    {
       name = "path",
       group_index = 2,
       keyword_length = 4,
     },
-	},
+  },
 
-  -- sorting = {
-  --   priority_weight = 2,
-  --   comparators = {
-  --     compare.offset,
-  --     compare.exact,
-  --     compare.score,
-  --     compare.recently_used,
-  --     compare.locality,
-  --     compare.sort_text,
-  --     compare.length,
-  --     compare.order,
-  --   },
-  -- },
+  confirm_opts = {
+    behavior = cmp.ConfirmBehavior.Replace,
+    select = false,
+  },
 
-	confirm_opts = {
-		behavior = cmp.ConfirmBehavior.Replace,
-		select = false,
-	},
-
-	window = {
-		completion = cmp.config.window.bordered(),
+  window = {
+    completion = cmp.config.window.bordered(),
     -- completion = {
     --   border = "rounded",
     --   winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
     -- },
-		documentation = false,
-	},
+    documentation = false,
+  },
 
   completion = { completeopt = "menu,menuone,noinsert", keyword_length = 1 },
 
   experimental = { native_menu = false, ghost_text = false },
 
-  -- For snippet works! 
+  -- For snippet works!
   snippet = {
     expand = function(args)
       require("luasnip").lsp_expand(args.body)
     end,
   },
-})--End Configuration
+}) --End Configuration
 
--- Use buffer source for `/`
-cmp.setup.cmdline("/", {
-  sources = {
-    { name = "buffer" },
-  },
+-- Set configuration for specific filetype.
+cmp.setup.filetype('gitcommit', {
+  sources = cmp.config.sources({
+    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+  }, {
+    { name = 'buffer' },
+  })
 })
 
--- Use cmdline & path source for ':'
-cmp.setup.cmdline(":", {
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
-    { name = "path" },
+    { name = 'path' }
   }, {
-    { name = "cmdline" },
-  }),
+    { name = 'cmdline' }
+  })
 })
 
 -- Auto pairs
